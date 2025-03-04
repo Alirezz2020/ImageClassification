@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # For social auth.
+                'social_django.context_processors.login_redirect',  # For social auth.
             ],
         },
     },
@@ -159,3 +162,18 @@ DEFAULT_FROM_EMAIL: The default "From" email address that will be used when send
 
 
 # ... other settings ...
+
+
+# --- Social Auth Settings ---
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',  # Google OAuth2
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# Replace these with your Google OAuth2 credentials.
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'your-google-client-id'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'your-google-client-secret'
+
+# Optional: Define a login redirect URL
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

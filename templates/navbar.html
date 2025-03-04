@@ -22,6 +22,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
                 </li>
+                    <li class="nav-item">
+              <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+            </li>
                 {% endif %}
             </ul>
        

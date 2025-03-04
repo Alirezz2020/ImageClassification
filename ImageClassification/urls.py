@@ -8,6 +8,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls',namespace='accounts')),  # your accounts app URLs
 
     path('', include('home.urls', namespace='home')),
+    path('oauth/', include('social_django.urls', namespace='social')),
     # path('', include('.urls', namespace='')),  #enter new apps here
 ]
 if settings.DEBUG:
