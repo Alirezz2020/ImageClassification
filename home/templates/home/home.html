@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Home - Image Classifier{% endblock %}
+{% block content %}
+  <h1>Image Classification</h1>
+  <p>Upload an image to classify.</p>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Upload and Classify</button>
+  </form>
+  {% if result %}
+    <div class="alert alert-info mt-3">
+      Classification Result: {{ result }}
+    </div>
+  {% endif %}
+{% endblock %}
